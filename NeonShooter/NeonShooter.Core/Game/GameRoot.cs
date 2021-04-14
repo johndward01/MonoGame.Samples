@@ -33,7 +33,6 @@ namespace NeonShooter
 		{
 			Instance = this;
 			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "Content";
 
 			graphics.PreferredBackBufferWidth = 800;
 			graphics.PreferredBackBufferHeight = 600;

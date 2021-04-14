@@ -24,7 +24,7 @@ namespace NeonShooter
 		}
 
 		const int cooldownFrames = 6;
-		int cooldowmRemaining = 0;
+		int cooldownRemaining = 0;
 
 		int framesUntilRespawn = 0;
 		public bool IsDead { get { return framesUntilRespawn > 0; } }
@@ -56,9 +56,9 @@ namespace NeonShooter
 			}
 			
 			var aim = Input.GetAimDirection();
-			if (aim.LengthSquared() > 0 && cooldowmRemaining <= 0)
+			if (aim.LengthSquared() > 0 && cooldownRemaining <= 0)
 			{
-				cooldowmRemaining = cooldownFrames;
+				cooldownRemaining = cooldownFrames;
 				float aimAngle = aim.ToAngle();
 				Quaternion aimQuat = Quaternion.CreateFromYawPitchRoll(0, 0, aimAngle);
 
@@ -74,8 +74,8 @@ namespace NeonShooter
 				Sound.Shot.Play(0.2f, rand.NextFloat(-0.2f, 0.2f), 0);
 			}
 
-			if (cooldowmRemaining > 0)
-				cooldowmRemaining--;
+			if (cooldownRemaining > 0)
+				cooldownRemaining--;
 
 			const float speed = 8;
 			Velocity += speed * Input.GetMovementDirection();

@@ -32,6 +32,9 @@ namespace NeonShooter
 			Instance = this;
 			graphics = new GraphicsDeviceManager(this);
 
+            //set the GraphicsDeviceManager's fullscreen property
+            graphics.IsFullScreen = true;
+
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
 

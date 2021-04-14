@@ -69,10 +69,9 @@ namespace Platformer2D
 #endif
             graphics.IsFullScreen = false;
 
-            //graphics.PreferredBackBufferWidth = 800;
-            //graphics.PreferredBackBufferHeight = 480;
+            //graphics.PreferredBackBufferWidth = 1920;
+            //graphics.PreferredBackBufferHeight = 1080;
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
-
             Accelerometer.Initialize();
         }
 
@@ -161,9 +160,17 @@ namespace Platformer2D
             accelerometerState = Accelerometer.GetState();
 
 #if !NETFX_CORE
-            // Exit the game when back is pressed.
-            if (gamePadState.Buttons.Back == ButtonState.Pressed)
+            // TODO: Exit the game when the escape key is pressed.
+            if (keyboardState.IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
+
+            // TODO: Toggle fullscreen with the F11 key (function F11 if on laptop)
+            if (keyboardState.IsKeyDown(Keys.F11))
+            {
+                graphics.ToggleFullScreen();
+            }
 #endif
             bool continuePressed =
                 keyboardState.IsKeyDown(Keys.Space) ||
